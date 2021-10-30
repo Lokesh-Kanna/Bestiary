@@ -33,6 +33,15 @@ code {
   margin-top: 1rem;
 }
 
+#homepara {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+}
+
+#bram {
+  font-size: 1rem;
+}
+
 #card-box {
   display: flex;
   margin: 1rem 0 0 1rem;

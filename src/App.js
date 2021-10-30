@@ -57,6 +57,15 @@ function App() {
                     avoid any kind of contact with humans. Although there are may sightings of yeti even today, there is no concrete evidence on
                     the existance of them.`,
       img: "https://images.squarespace-cdn.com/content/v1/5d2935d76499400001905606/1565992866040-JZMO6NRK346W9GFK7NTS/Yeti?format=1000w"
+    },
+    {
+      name: "Goblin",
+      origin: "Germany/Britain",
+      description: `Having the same magical abilities as that of the beloved faries, they are the exact opposite of faries. Goblins are short with sharp
+                    pointy ears and hooked nose. They are mischevious malicious and greedy creature especially when it comes to gold and jwelery. Like any 
+                    other mythical creatures, there is no one kind of goblin. They differ from culture to culture but regardless, they are all considered 
+                    as grotesque creatures.`,
+      img: "https://img.artpal.com/495861/177-21-7-28-20-31-7m.jpg"
     }
   ]
   return (
@@ -102,6 +111,7 @@ function Home() {
     <div>
       <h3 id="home-welcome">Hello User,</h3>
       <img id="welcome-gif" src="welcome.gif"  />
+      <p id="homepara"><i>"Welcome to my website! Enter freely and of your own will!"</i><br></br> <span id="bram">-Bram Stoker, Dracula</span></p>
     </div>
   )
 }
