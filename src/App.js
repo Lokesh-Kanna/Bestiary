@@ -9,6 +9,9 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import Badge from '@mui/material/Badge';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDown';
 import { useHistory } from "react-router-dom";
 
 
@@ -25,17 +28,26 @@ function App() {
                     believed charchteristics are, two long & sharp canine teeth, casting no shadow, and no reflection in the mirror.
                     There is also a common belief that vampires can shapeshift into a bat and/or a wolf and that they can command
                     other creatures of the night.`,
-      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Philip_Burne-Jones_-_The_Vampire.jpg/330px-Philip_Burne-Jones_-_The_Vampire.jpg"
+      img: "https://mfiles.alphacoders.com/695/695016.jpg"
     },
     {
       name: "Werewolf",
-      origin: "",
+      origin: "Ancient Greece",
       description: `A warewolf is a human who has the ability to shapeshift into a wolf. It is believed that on full moon nights 
                     humans bitten by a werewolf or under a specific curse by a witch turn into werewolves themselves. The earliest 
                     known werewolf mythology comes from greek mythology. Studies says that the human and animal behaviors tend to get 
                     violant during full moon. This might be the cause of the idea of "beast within" which could have lead to the werewolf
                     mythology.`,
       img: "https://difference.guru/wp-content/uploads/2021/06/Difference-Between-Lycan-and-Werewolf.jpg"
+    },
+    {
+      name: "Zombie",
+      origin: "Haiti",
+      description: `Zombies are undead creatures. Unlike vampires, they are not bound to the night. A person becomes a zombie when they 
+                    get infected by a virus that is capable of reanimating and controlling the brain after the death of the individual affected
+                    by the virus. Zombies are characterized by their robotic behaviour with rotting flesh with no other motive than to feed
+                    mainly on brains.`,
+      img: "https://i.imgur.com/zZTgykM.jpg"
     }
   ]
   return (
@@ -143,10 +155,41 @@ function CharDisplay({name, origin, description, img, id}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        
+        <LikeCounter />
       </CardActions>
     </Card>
   );
 }
+
+
+function LikeCounter() {
+  const [like, setLike] = useState(0);
+  const [dislike, setDislike] = useState(0);
+
+  return (
+    <div>
+      <Badge badgeContent={like} sx={{ mr: 2 }} color="success">
+        <IconButton 
+          aria-label="delete" 
+          size="small"
+          color="primary" 
+          onClick={() => setLike(like + 1)}>
+          <ThumbUpAltIcon />
+        </IconButton>
+      </Badge>
+      
+      <Badge badgeContent={dislike} sx={{ mr: 0.5 }} color="error">
+        <IconButton 
+          aria-label="delete" 
+          size="small"
+          color="primary"
+          onClick={() => setDislike(dislike + 1)}> 
+          <ThumbDownAltIcon />
+        </IconButton>
+      </Badge>
+    </div>
+  )
+}
+
 
 export default App;
