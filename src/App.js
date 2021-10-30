@@ -108,7 +108,8 @@ function Characters({beasts}) {
 
 
 function CharDisplay({name, origin, description, img, id}) {
-  const [visibility, setVisibility] = useState("");
+  const [visibility, setVisibility] = useState(false);
+  const style = { display: visibility ? 'block' : 'none' };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -124,8 +125,12 @@ function CharDisplay({name, origin, description, img, id}) {
                 <Typography gutterBottom variant="h5" component="div">
                   {name}
                 </Typography>
-                <IconButton aria-label="delete" size="large">
-                  <ArrowDropDownIcon fontSize="inherit" color="primary"/>
+                <IconButton 
+                  aria-label="delete" 
+                  size="large"
+                  onClick={() => {visibility ? setVisibility(false) : setVisibility(true)}}>
+                  {visibility ? <ArrowDropUpIcon color="primary"/>
+                        : <ArrowDropDownIcon color="primary"/>}
                 </IconButton>
               </div>
             <Typography variant="body2" color="text.secondary">
@@ -133,7 +138,7 @@ function CharDisplay({name, origin, description, img, id}) {
             </Typography>
           </div>
           <Typography variant="body2" color="text.secondary">
-            {description}
+            <p style={style}>{description}</p>
           </Typography>
         </CardContent>
       </CardActionArea>

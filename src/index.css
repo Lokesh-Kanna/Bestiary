@@ -25,6 +25,7 @@ code {
   font-family: 'Ubuntu', 'sans-serif';
   font-size: 3rem !important;
   margin-top: 3.5rem;
+  opacity: 0.8 !important;
 }
 
 #welcome-gif {
