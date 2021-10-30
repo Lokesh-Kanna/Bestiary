@@ -37,6 +37,7 @@ code {
   display: flex;
   margin: 1rem 0 0 1rem;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 #nameorigin {

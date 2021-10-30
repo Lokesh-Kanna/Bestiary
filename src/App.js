@@ -48,6 +48,15 @@ function App() {
                     by the virus. Zombies are characterized by their robotic behaviour with rotting flesh with no other motive than to feed
                     mainly on brains.`,
       img: "https://i.imgur.com/zZTgykM.jpg"
+    },
+    {
+      name: "Yeti",
+      origin: "India",
+      description: `Yeti is an ape like creature known to be found in the Himalayan mountain. There are many sitings in the depths of the forest
+                    of creatures like this all over the world and are called by many different names locally. Yeti are usually known to be calm 
+                    avoid any kind of contact with humans. Although there are may sightings of yeti even today, there is no concrete evidence on
+                    the existance of them.`,
+      img: "https://images.squarespace-cdn.com/content/v1/5d2935d76499400001905606/1565992866040-JZMO6NRK346W9GFK7NTS/Yeti?format=1000w"
     }
   ]
   return (
