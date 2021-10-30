@@ -12,12 +12,19 @@ code {
     monospace;
 }
 
+.navbar-brand {
+  color: black;
+  font-size: 1.5rem;
+}
+
 .nav-link {
   font-weight: 400 !important;
   opacity: .9 !important;
+  color: black;
 }
 
 .nav-link:hover {
+  color: black !important;
   font-weight: 600 !important;
 }
 
@@ -35,7 +42,7 @@ code {
 
 #homepara {
   font-size: 1.25rem;
-  margin-top: 2rem;
+  margin: 2rem 1rem;
 }
 
 #bram {
@@ -58,4 +65,28 @@ code {
 #expand {
   display: flex;
   align-items: flex-end;
+}
+
+
+@media screen and (max-width: 500px) {
+  #home-welcome {
+    font-family: 'Ubuntu', 'sans-serif';
+    font-size: 3rem !important;
+    margin-top: 8rem;
+    opacity: 0.8 !important;
+  }
+
+  #welcome-gif {
+    width: 70%;
+    margin-top: 3rem;
+  }
+
+  #homepara {
+    font-size: 1.25rem;
+    margin: 3rem 1rem;
+  }
+
+  .navbar-nav {
+    display: block;
+  }
 }

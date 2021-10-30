@@ -12,6 +12,10 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Badge from '@mui/material/Badge';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDown';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import MenuIcon from '@mui/icons-material/Menu';
 import { useHistory } from "react-router-dom";
 
 
@@ -65,7 +69,7 @@ function App() {
                     pointy ears and hooked nose. They are mischevious malicious and greedy creature especially when it comes to gold and jwelery. Like any 
                     other mythical creatures, there is no one kind of goblin. They differ from culture to culture but regardless, they are all considered 
                     as grotesque creatures.`,
-      img: "https://img.artpal.com/495861/177-21-7-28-20-31-7m.jpg"
+      img: "https://64.media.tumblr.com/2693273781b4074fad756ac19dd60a4d/tumblr_o4smbtu49s1v9qvuco1_1280.jpg"
     }
   ]
   return (
@@ -87,21 +91,30 @@ function App() {
 
 function NavBar() {
   return(
-      <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Bestiary</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
+      <AppBar style={{ backgroundColor: 'rgb(233, 233, 233)'}} position="static">
+          <Toolbar>
+            <a class="navbar-brand">Bestiary</a>
             <Link class="nav-link active" to="/">Home <span class="sr-only">(current)</span></Link>
             <Link class="nav-link" to="/character">Beasts</Link>
             <Link class="nav-link" to="/add-beast">Add to Bestiary</Link>
-          </div>
-        </div>
-        </nav>
-      </div>
+          </Toolbar>
+        </AppBar>
+    
+      // <div>
+      //   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      //   
+      //   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      //     <span class="navbar-toggler-icon"></span>
+      //   </button>
+      //   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      //     <div class="navbar-nav">
+      //       <Link class="nav-link active" to="/">Home <span class="sr-only">(current)</span></Link>
+      //       <Link class="nav-link" to="/character">Beasts</Link>
+      //       <Link class="nav-link" to="/add-beast">Add to Bestiary</Link>
+      //     </div>
+      //   </div>
+      //   </nav>
+      // </div>
   )
 }
 
