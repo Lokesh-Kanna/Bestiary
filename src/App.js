@@ -40,8 +40,8 @@ function NavBar() {
 function Home() {
   return (
     <div>
-      <h3>Hello User,</h3>
-      <img src="" alt="" />
+      <h3 id="home-welcome">Hello User,</h3>
+      <img id="welcome-gif" src="welcome.gif"  />
     </div>
     
   )
