@@ -15,6 +15,7 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDown';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import DeleteIcon from '@mui/icons-material/Delete';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useHistory } from "react-router-dom";
 
@@ -99,22 +100,6 @@ function NavBar() {
             <Link class="nav-link" to="/add-beast">Add to Bestiary</Link>
           </Toolbar>
         </AppBar>
-    
-      // <div>
-      //   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      //   
-      //   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      //     <span class="navbar-toggler-icon"></span>
-      //   </button>
-      //   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      //     <div class="navbar-nav">
-      //       <Link class="nav-link active" to="/">Home <span class="sr-only">(current)</span></Link>
-      //       <Link class="nav-link" to="/character">Beasts</Link>
-      //       <Link class="nav-link" to="/add-beast">Add to Bestiary</Link>
-      //     </div>
-      //   </div>
-      //   </nav>
-      // </div>
   )
 }
 
@@ -153,43 +138,52 @@ function Characters({beasts}) {
 
 function CharDisplay({name, origin, description, img, id}) {
   const [visibility, setVisibility] = useState(false);
+  const [del, setDel] = useState(false);
   const style = { display: visibility ? 'block' : 'none' };
+  const carddisp = { display: del ? 'none' : 'block'}
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image={img}
-            sx={{ width: 350, height: 400 }}
-          />
-        <CardContent>
-          <div id="nameorigin">
-              <div id="expand">
-                <Typography gutterBottom variant="h5" component="div">
-                  {name}
-                </Typography>
-                <IconButton 
-                  aria-label="delete" 
-                  size="large"
-                  onClick={() => {visibility ? setVisibility(false) : setVisibility(true)}}>
-                  {visibility ? <ArrowDropUpIcon color="primary"/>
-                        : <ArrowDropDownIcon color="primary"/>}
-                </IconButton>
-              </div>
+    <div id="card">
+      <Card style={carddisp} sx={{ maxWidth: 345 }}>
+        <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image={img}
+              sx={{ width: 350, height: 400 }}
+            />
+          <CardContent>
+            <div id="nameorigin">
+                <div id="expand">
+                  <Typography gutterBottom variant="h5" component="div">
+                    {name}
+                  </Typography>
+                  <IconButton
+                    aria-label="delete"
+                    size="large"
+                    onClick={() => {visibility ? setVisibility(false) : setVisibility(true)}}>
+                    {visibility ? <ArrowDropUpIcon color="primary"/>
+                          : <ArrowDropDownIcon color="primary"/>}
+                  </IconButton>
+                </div>
+              <Typography variant="body2" color="text.secondary">
+                <b>Origin:</b> <br></br> {origin}
+              </Typography>
+            </div>
             <Typography variant="body2" color="text.secondary">
-              <b>Origin:</b> <br></br> {origin}
+              <p style={style}>{description}</p>
             </Typography>
-          </div>
-          <Typography variant="body2" color="text.secondary">
-            <p style={style}>{description}</p>
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <LikeCounter />
-      </CardActions>
-    </Card>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+            <LikeCounter />
+            <IconButton 
+                aria-label="delete"
+                onClick={() => setDel(true)}>
+              <DeleteIcon />
+            </IconButton>
+        </CardActions>
+      </Card>
+    </div>
   );
 }
 

@@ -62,6 +62,14 @@ code {
   align-items: center;
 }
 
+#actionele {
+  display: flex;
+}
+
+.css-1t6e9jv-MuiCardActions-root {
+  justify-content: space-between !important;
+}
+
 #expand {
   display: flex;
   align-items: flex-end;
