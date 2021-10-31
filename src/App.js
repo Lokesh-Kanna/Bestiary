@@ -16,7 +16,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import DeleteIcon from '@mui/icons-material/Delete';
-import MenuIcon from '@mui/icons-material/Menu';
+import TextField from '@mui/material/TextField';
 import { useHistory } from "react-router-dom";
 
 
@@ -76,6 +76,10 @@ function App() {
   return (
       <div className="App">
         <Switch>
+          <Route path="/add-beast">
+            <NavBar />
+            <AddBeast beasts={beasts}/>
+          </Route>
           <Route path="/character">
             <NavBar />
             <Characters beasts={beasts}/>
@@ -217,5 +221,54 @@ function LikeCounter() {
   )
 }
 
+
+function AddBeast({beasts}) {
+  const [newbeast, setNewbeast] = useState("");
+  const [neworigin, setNeworigin] = useState("");
+  const [newdescription, setNewnewdescription] = useState("");
+  const [newimg, setNewimg] = useState("");
+  const addbeast = {
+                        name: newbeast,
+                        origin: neworigin,
+                        description:  newdescription,
+                        img: newimg,
+                      }
+  const addedbeast = [...beasts, addbeast];
+  return (
+    <div id="addform">
+      <TextField 
+        className="outlined-basic" 
+        label="Beast Name" 
+        variant="outlined"
+        onChange={(event) => setNewbeast(event.target.value)} 
+        />
+      <TextField 
+        className="outlined-basic" 
+        label="Place of Origin" 
+        variant="outlined" 
+        onChange={(event) => setNeworigin(event.target.value)} 
+        />
+      <TextField 
+        className="outlined-basic" 
+        label="Description" 
+        variant="outlined" 
+        onChange={(event) => setNewnewdescription(event.target.value)}
+        />
+      <TextField 
+        className="outlined-basic" 
+        label="Image URL" 
+        variant="outlined" 
+        onChange={(event) => setNewimg(event.target.value)}
+        />
+      <Button 
+        variant="contained"
+        onClick={() =>
+          console.log(addedbeast) 
+            // <Characters beasts={addedbeast}/>
+          }
+        >Add Beast</Button>
+    </div>
+  )
+}
 
 export default App;
