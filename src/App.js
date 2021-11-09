@@ -444,8 +444,14 @@ function BasicForm() {
   // );
 
     const formValidationSchema = yup.object({
-      email: yup.string().min(5, "Give a bigger email").required("why not fill this email?"),
-      password: yup.string().min(8, "Give a stronger password").required("Password is a must to protect your privacy")
+      email: yup.string()
+            .min(5, "Give a bigger email")
+            .required("why not fill this email?")
+            .matches(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, "Invalid Email"),
+      password: yup.string()
+            .min(8, "Give a stronger password")
+            .max(12, "Woah there! take it easy with the password.")
+            .required("Password is a must to protect your privacy")
     })
 
     const  formik = useFormik({ 
