@@ -20,6 +20,7 @@ import TextField from "@mui/material/TextField";
 import { useHistory } from "react-router-dom";
 import { Formik } from "formik";
 import { useFormik } from "formik";
+import * as yup from "yup";
 
 fetch("https://6188a459d0821900178d740b.mockapi.io/Beast")
   .then((data) => data.json())
@@ -442,9 +443,15 @@ function BasicForm() {
   //   </div>
   // );
 
+    const formValidationSchema = yup.object({
+      email: yup.string().min(5, "Give a bigger email").required("why not fill this email?"),
+      password: yup.string().min(8, "Give a stronger password").required("Password is a must to protect your privacy")
+    })
+
     const  formik = useFormik({ 
         initialValues: { email: "", password: "" },
-        validate: {validateForm},
+        // validate: {validateForm},
+        validationSchema: formValidationSchema,
         onSubmit: (value) => {
           console.log("On Submit:", value)
         }
