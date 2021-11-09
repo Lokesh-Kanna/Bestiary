@@ -19,6 +19,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import TextField from "@mui/material/TextField";
 import { useHistory } from "react-router-dom";
 import { Formik } from "formik";
+import { useFormik } from "formik";
 
 fetch("https://6188a459d0821900178d740b.mockapi.io/Beast")
   .then((data) => data.json())
@@ -379,38 +380,104 @@ function Tictac({ val, onPlayerClick }) {
   );
 }
 
+
 function BasicForm() {
+  const validateForm = (values) => {
+    console.log("Validate form", values);
+    const errors = {};
+
+    if(values.email.length < 5) {
+      errors.email = "Please provide at least 5 characters";
+      return errors;
+    }
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = "Please provide a valid email";
+      return errors;
+    }
+
+    if(values.password.length < 8) {
+      errors.password = "Please provide atleast 8 characters";
+      return errors;
+    }
+    else if (values.password.length > 12) {
+      errors.password = "Please provide less than 12 characters";
+      return errors;
+    }
+  }
+  // return (
+  //   <div>
+  //     <Formik
+  //       initialValues={{ email: "", password: "" }}
+  //       validate={validateForm}
+  //       onSubmit={(value) => console.log("On Submit:", value)}
+  //     >
+  //       {(formik) => (
+  //         <form onSubmit={ formik.handleSubmit}>
+  //           <input
+  //             type="email"
+  //             placeholder="enter your email"
+  //             id="email"
+  //             name="email"
+  //             value={formik.values.email}
+  //             onChange={formik.handleChange}
+  //             onBlur={formik.handleBlur}
+  //           /><br></br>
+  //           {formik.errors.email && formik.touched.email && formik.errors.email}
+  //           <br></br>
+  //           <input
+  //             type="password"
+  //             placeholder="enter your password"
+  //             id="password"
+  //             name="password"
+  //             value={formik.values.password}
+  //             onChange={formik.handleChange}
+  //             onBlur={formik.handleBlur}
+  //           /><br></br>
+  //           {formik.errors.password && formik.touched.password && formik.errors.password}
+  //           <br></br>
+  //           <button type="submit">Submit</button>
+  //         </form>
+  //       )}
+  //     </Formik>
+  //   </div>
+  // );
+
+    const  formik = useFormik({ 
+        initialValues: { email: "", password: "" },
+        validate: {validateForm},
+        onSubmit: (value) => {
+          console.log("On Submit:", value)
+        }
+    })
   return (
     <div>
-      <Formik initialValues={{ email: "", password: "" }}>
-        {(formik) => (
-          <form>
-            <input 
-              type="email" 
-              placeholder="enter your email" 
+          <form onSubmit={ formik.handleSubmit}>
+            <input
+              type="email"
+              placeholder="enter your email"
               id="email"
               name="email"
               value={formik.values.email}
-              onChange= { formik.handleChange}
-              onBlur={ formik.handleBlur }
-              />
-            <input 
-              type="password" 
-              placeholder="enter your password" 
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            /><br></br>
+            {formik.errors.email && formik.touched.email && formik.errors.email}
+            <br></br>
+            <input
+              type="password"
+              placeholder="enter your password"
               id="password"
               name="password"
               value={formik.values.password}
-              onChange= { formik.handleChange}
-              onBlur={ formik.handleBlur }
-              />
-            <button>Submit</button>
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            /><br></br>
+            {formik.errors.password && formik.touched.password && formik.errors.password}
+            <br></br>
+            <button type="submit">Submit</button>
           </form>
-        )}
-      </Formik>
     </div>
-  );
+  )
 }
-
-
 
 export default App;
