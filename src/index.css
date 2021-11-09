@@ -112,3 +112,20 @@ code {
     display: block;
   }
 }
+
+
+/* Ti Tac Toe */
+
+.table {
+  border: 1px solid black;
+  margin-bottom: 0rem;
+ }
+
+.box-div {
+  margin-top: 5rem;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(3, 1fr);
+  width: min-content;
+  
+}
