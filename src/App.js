@@ -9,6 +9,8 @@ import { Characters } from "./Characters";
 import { AddBeast } from "./AddBeast";
 import { Game } from "./Game";
 import { BasicForm } from "./BasicForm";
+import { useReducer } from "react";
+import { useState } from "react"
 
 fetch("https://6188a459d0821900178d740b.mockapi.io/Beast")
   .then((data) => data.json())
@@ -94,7 +96,7 @@ function App() {
           <NavBar />
           <BasicForm />
         </Route>
-        <Route path="/">
+        <Route path="/color-game">
           <NavBar />
           <ColorGame />
         </Route>
@@ -108,8 +110,41 @@ function App() {
 }
 
 function ColorGame() {
+  const [color, setColor] = useState("");
+  const initialState = { color: color };
+  const reducer = (state, action) => {
+    switch(action.type){
+      case "add": {
+        return { color: state.color}
+      }
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const style1 = { 
+    display: 'flex',
+    justifyContent: "center",
+  }
+   const style2 = { 
+    backgroundColor: state.color,
+    height: 50,
+    width: 50,
+   }
   return (
-    <div></div>
+    <div>
+      <input 
+        type="text" 
+        placeholder="Enter a color to add"
+        onChange={(event) => setColor(event.target.value)}/>
+      <button
+        onClick={() => dispatch({type: "add"})}
+        >Add Color</button>
+      <p>Added Colors: {state.color}</p>
+      <div style={style1}>
+        <div style={style2}></div>
+      </div>
+      
+    </div>
   )
 }
 
